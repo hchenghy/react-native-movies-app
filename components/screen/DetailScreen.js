@@ -36,9 +36,7 @@ const DetailScreen = ({ route, navigation }) => {
         <Text>{result.overview}</Text>
         <View style={styles.infoContainer}>
           <Text style={styles.infoText}>
-            Popularity: {result.popularity}
-          </Text>
-          <Text style={styles.infoText}>
+            Popularity: {result.popularity} |
             Release Date: {result.release_date}
           </Text>
         </View>
@@ -78,15 +76,13 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'flex-start',
+    // alignItems: 'flex-start',
+    textAlign: 'left',
     marginTop: 10,
   },
 
-  infoText: {
-    marginRight: 10,
-  },
 });
 
 export default DetailScreen;
