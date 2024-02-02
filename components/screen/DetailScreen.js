@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   descriptionContainer: {
-    paddingHorizontal: 50,
+    paddingHorizontal: 47,
   },
 
   description: {
