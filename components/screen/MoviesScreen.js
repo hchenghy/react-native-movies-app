@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, FlatList } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Dropdown from '../base/Dropdown';
 import ItemCard from '../module/ItemCard';
@@ -10,15 +10,14 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const MoviesScreen = ({ navigation }) => {
 
   const subtypes = [
-    {label: "Now Playing", value: "now_playing"},
-    {label: "Pouplar", value: "popular"},
-    {label: "Top Rated", value: "top_rated"},
-    {label: "Upcoming", value: "upcoming"}
+    { label: "Now Playing", value: "now_playing" },
+    { label: "Pouplar", value: "popular" },
+    { label: "Top Rated", value: "top_rated" },
+    { label: "Upcoming", value: "upcoming" }
   ]
 
   const [movies, setMovies] = useState([]);
   const [subtype, setSubtype] = useState(subtypes[0].value);
-//   const navigation = useNavigation(); // Get navigation object using useNavigation hook
 
   useEffect(() => {
     fetchMovies();
@@ -38,28 +37,49 @@ const MoviesScreen = ({ navigation }) => {
   }
 
   return (
-    <View>
-      <Dropdown
-        data={subtypes}
-        selectedValue={subtype}
-        onValueChange={onSubtypeValueChange} />
-     
+    <View style={styles.container}>
+      <View style={styles.dropdownContainer}>
+        <Dropdown
+          data={subtypes}
+          selectedValue={subtype}
+          onValueChange={onSubtypeValueChange} />
+      </View>
       <FlatList
+        style={styles.flatList}
         data={movies}
-        renderItem={({ item }) => {
-        return (<ItemCard
-        id={item.id}
-        path={`${IMAGE_BASE_URL}/${item.poster_path}`}
-        title={item.title}
-        popularity={item.popularity}
-        releaseDate={item.release_date}
-        onPress={() => navigation.navigate('Detail', { id: item.id,type: "movie" })}
-        />
-        )}}
+        renderItem={({ item }) => (
+          <ItemCard
+            id={item.id}
+            path={`${IMAGE_BASE_URL}/${item.poster_path}`}
+            title={item.title}
+            popularity={item.popularity}
+            releaseDate={item.release_date}
+            onPress={() => navigation.navigate('Detail', { id: item.id, type: "movie" })}
+          />
+        )}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+
+  dropdownContainer: {
+    paddingHorizontal: 70,
+    marginTop: 30,
+    marginBottom: 30,
+  },
+
+
+  flatList: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+});
 
 export default MoviesScreen;

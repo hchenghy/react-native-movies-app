@@ -1,4 +1,4 @@
-import { StyleSheet, View, StatusBar} from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,10 +16,10 @@ export default function App() {
 
   const TabNavigator = () => {
     return (
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={{ tabBarLabelStyle: { textTransform: "none" } }}>
         <Tab.Screen name="Movies" component={MoviesScreen} />
-        <Tab.Screen name="Search Result" component={SearchScreen} />
-        <Tab.Screen name="Tv Shows" component={TvShowsScreen} /> 
+        <Tab.Screen name="Search Results" component={SearchScreen} />
+        <Tab.Screen name="TV Shows" component={TvShowsScreen} />
       </Tab.Navigator>
     );
   };
@@ -28,7 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Movie App" component={TabNavigator} />
+        <Stack.Screen name="Movies App" component={TabNavigator} />
         <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -44,6 +44,10 @@ const styles = StyleSheet.create({
   },
 
   statusColor: {
-    backgroundColor: "blue",
+    backgroundColor: "#5F6467",
   },
+
+
+
+
 });

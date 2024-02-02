@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Dropdown from '../base/Dropdown';
 import ItemCard from '../module/ItemCard';
@@ -10,15 +10,15 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const MoviesScreen = ({ navigation }) => {
 
   const subtypes = [
-    {label: "Airing Today", value: "airing_today"},
-    {label: "On The Air", value: "on_the_air"},
-    {label: "Popular", value: "popular"},
-    {label: "Top Rated", value: "top_rated"}
+    { label: "Airing Today", value: "airing_today" },
+    { label: "On The Air", value: "on_the_air" },
+    { label: "Popular", value: "popular" },
+    { label: "Top Rated", value: "top_rated" }
   ]
 
   const [tvShows, setTVShows] = useState([]);
   const [subtype, setSubtype] = useState(subtypes[0].value);
-//   const navigation = useNavigation(); // Get navigation object using useNavigation hook
+  //   const navigation = useNavigation(); // Get navigation object using useNavigation hook
 
   useEffect(() => {
     fetchTvShows();
@@ -38,28 +38,43 @@ const MoviesScreen = ({ navigation }) => {
   }
 
   return (
-    <View>
-      <Dropdown
-        data={subtypes}
-        selectedValue={subtype}
-        onValueChange={onSubtypeValueChange} />
-     
+    <View style={styles.container}>
+      <View style={styles.dropdownContainer}>
+        <Dropdown
+          data={subtypes}
+          selectedValue={subtype}
+          onValueChange={onSubtypeValueChange} />
+      </View>
       <FlatList
+        style={styles.flatList}
         data={tvShows}
         renderItem={({ item }) => {
-        return (<ItemCard
-        id={item.id}
-        path={`${IMAGE_BASE_URL}/${item.poster_path}`}
-        title={item.name}
-        popularity={item.popularity}
-        releaseDate={item.release_date}
-        onPress={() => navigation.navigate('Detail', { id: item.id, type: "tv" })}
-        />
-        )}}
+          return (<ItemCard
+            id={item.id}
+            path={`${IMAGE_BASE_URL}/${item.poster_path}`}
+            title={item.name}
+            popularity={item.popularity}
+            releaseDate={item.release_date}
+            onPress={() => navigation.navigate('Detail', { id: item.id, type: "tv" })}
+          />
+          )
+        }}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+  },
+
+  dropdownContainer: {
+    paddingHorizontal: 70,
+    marginTop: 30,
+    marginBottom: 30,
+  },
+});
 
 export default MoviesScreen;
