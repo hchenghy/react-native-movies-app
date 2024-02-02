@@ -47,36 +47,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'center',
+    backgroundColor: 'white'
   },
 
   image: {
-    width: 200,
-    height: 200,
+    width: 230,
+    height: 230,
     marginBottom: 5,
   },
 
   title: {
     fontWeight: 'bold',
     fontSize: 18,
-    marginBottom: 45,
+    marginBottom: 40,
     marginTop: 45,
   },
 
   descriptionContainer: {
-    // alignItems: 'center',
-    paddingHorizontal: 45,
+    paddingHorizontal: 50,
   },
 
   description: {
     marginBottom: 10,
     textAlign: 'center',
+    lineHeight: 10,
   },
 
   infoText: {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    marginTop: 10,
+    marginTop: 25,
     textAlign: 'left',
   },
 

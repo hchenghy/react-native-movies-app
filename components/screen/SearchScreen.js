@@ -34,7 +34,7 @@ const SearchScreen = ({ navigation }) => {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/search/${searchType}?api_key=${API_KEY}&query=${searchTerm}`);
       setSearchResults(response.data.results);
-      setSearchTerm(''); // Clear the searchTerm
+      setSearchTerm('');
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
@@ -53,10 +53,13 @@ const SearchScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
-        <Text style={styles.label}>Search Movie/TV Show Name*</Text>
+        <Text style={styles.label}>
+          Search Movie/TV Show Name
+          <Text style={{ color: 'red' }}>*</Text>
+        </Text>
         <View style={styles.inputContainer}>
           <View style={styles.iconContainer}>
-            <Icon name="search" size={20} style={styles.searchIcon} />
+            <Icon name="search" size={20} color='grey' style={styles.searchIcon} />
           </View>
           <TextInput
             style={styles.input}
@@ -65,8 +68,11 @@ const SearchScreen = ({ navigation }) => {
             value={searchTerm}
           />
         </View>
+        <Text style={styles.label}>
+          Choose Search Type
+          <Text style={{ color: 'red' }}>*</Text>
+        </Text>
 
-        <Text style={styles.label}>Choose Search Type*</Text>
         <View style={styles.row}>
 
           <View style={styles.dropdownContainer}>
