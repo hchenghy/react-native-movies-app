@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 230,
-    height: 230,
+    width: 250,
+    height: 250,
     marginBottom: 5,
   },
 
@@ -64,13 +64,12 @@ const styles = StyleSheet.create({
   },
 
   descriptionContainer: {
-    paddingHorizontal: 47,
+    paddingHorizontal: 40,
   },
 
   description: {
     marginBottom: 10,
     textAlign: 'center',
-    lineHeight: 10,
   },
 
   infoText: {
@@ -78,6 +77,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginTop: 25,
     textAlign: 'left',
+    fontSize: 12,
+
   },
 
 });
