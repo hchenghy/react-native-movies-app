@@ -29,17 +29,15 @@ const DetailScreen = ({ route, navigation }) => {
     result &&
     <View style={styles.container}>
       {result.title && <Text style={styles.title}>{result.title}</Text>}
-      <Image source={{ uri: `${IMAGE_BASE_URL}/${result.poster_path}` }} style={styles.image} />
       {result.name && <Text style={styles.title}>{result.name}</Text>}
+      <Image source={{ uri: `${IMAGE_BASE_URL}/${result.poster_path}` }} style={styles.image} />
       <View style={styles.descriptionContainer}>
         <Text style={styles.description}>{result.description}</Text>
         <Text>{result.overview}</Text>
-        <View style={styles.infoContainer}>
-          <Text style={styles.infoText}>
-            Popularity: {result.popularity} |
-            Release Date: {result.release_date}
-          </Text>
-        </View>
+        <Text style={styles.infoText}>
+          Popularity: {result.popularity} |
+          Release Date: {result.release_date}
+        </Text>
       </View>
     </View>
   )
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   descriptionContainer: {
-    alignItems: 'center',
+    // alignItems: 'center',
     paddingHorizontal: 45,
   },
 
@@ -75,12 +73,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  infoContainer: {
-    // flexDirection: 'row',
-    // justifyContent: 'flex-start',
-    // alignItems: 'flex-start',
-    textAlign: 'left',
+  infoText: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     marginTop: 10,
+    textAlign: 'left',
   },
 
 });
