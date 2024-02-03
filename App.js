@@ -16,7 +16,15 @@ export default function App() {
 
   const TabNavigator = () => {
     return (
-      <Tab.Navigator screenOptions={{ tabBarLabelStyle: { textTransform: "none" } }}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: { textTransform: "none" },
+          tabBarIndicatorStyle: {
+            borderBottomColor: '#283647',
+            borderBottomWidth: 2,
+          },
+        }}
+      >
         <Tab.Screen name="Movies" component={MoviesScreen} />
         <Tab.Screen name="Search Results" component={SearchScreen} />
         <Tab.Screen name="TV Shows" component={TvShowsScreen} />
@@ -28,7 +36,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Movies App" component={TabNavigator} />
+        <Stack.Screen name="Movies App" component={TabNavigator} options={{
+          headerStyle: {
+            backgroundColor: '#283647',
+          },
+          headerTintColor: '#fff',
+        }} />
         <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 
-
   flatList: {
     flex: 1,
     backgroundColor: 'white',
